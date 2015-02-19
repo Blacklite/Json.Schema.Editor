@@ -1,0 +1,153 @@
+﻿{
+  "title": "Features",
+  "options": {
+    "disable_collapse": true
+  },
+  "definitions": {
+    "FeatureD": {
+      "title": "FeatureD",
+      "options": {
+        "disable_collapse": true
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "additionalItems": false,
+      "properties": {
+        "featureD": {
+          "options": {
+            "hidden": true
+          },
+          "type": "string"
+        },
+        "enabled": {
+          "readonly": false,
+          "type": "boolean"
+        }
+      },
+      "format": "grid"
+    },
+    "FeatureCeeOptions": {
+      "options": {
+        "collapsed": true
+      },
+      "type": "object",
+      "properties": {
+        "database": {
+          "readonly": false,
+          "type": "string"
+        },
+        "username": {
+          "readonly": false,
+          "type": "string"
+        },
+        "password": {
+          "readonly": false,
+          "type": "string"
+        },
+        "enabled": {
+          "readonly": false,
+          "type": "boolean"
+        },
+        "options": {
+          "type": "string",
+          "enum": [
+            "private",
+            "public",
+            "protected"
+          ]
+        }
+      },
+      "required": [
+        "database",
+        "username",
+        "password",
+        "enabled",
+        "options"
+      ]
+    },
+    "FeatureC": {
+      "title": "FeatureC",
+      "options": {
+        "disable_collapse": true
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "additionalItems": false,
+      "properties": {
+        "featureC": {
+          "options": {
+            "hidden": true
+          },
+          "type": "string"
+        },
+        "enabled": {
+          "readonly": true,
+          "type": "boolean"
+        },
+        "settings": {
+          "$ref": "#/definitions/FeatureCeeOptions"
+        }
+      },
+      "format": "grid"
+    },
+    "FeatureB": {
+      "title": "FeatureB",
+      "options": {
+        "disable_collapse": true
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "additionalItems": false,
+      "properties": {
+        "featureB": {
+          "options": {
+            "hidden": true
+          },
+          "type": "string"
+        },
+        "enabled": {
+          "readonly": true,
+          "type": "boolean"
+        }
+      },
+      "format": "grid"
+    },
+    "FeatureA": {
+      "title": "FeatureA",
+      "options": {
+        "disable_collapse": true
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "additionalItems": false,
+      "properties": {
+        "featureA": {
+          "options": {
+            "hidden": true
+          },
+          "type": "string"
+        },
+        "enabled": {
+          "readonly": true,
+          "type": "boolean"
+        },
+        "FeatureD": {
+          "$ref": "#/definitions/FeatureD"
+        }
+      },
+      "format": "grid"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "featureA": {
+      "$ref": "#/definitions/FeatureA"
+    },
+    "featureB": {
+      "$ref": "#/definitions/FeatureB"
+    },
+    "featureC": {
+      "$ref": "#/definitions/FeatureC"
+    }
+  }
+}

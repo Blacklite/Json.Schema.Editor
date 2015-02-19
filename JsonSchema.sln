@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22512.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0D5B341E-5275-4CBA-BA46-501F886423E9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "JsonSchema", "src\JsonSchema\JsonSchema.kproj", "{4EFD6197-763C-49E7-990E-55E9C818B2B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{906AEEDF-9D9A-4AF4-855E-7F3473332C91}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+	ProjectSection(FolderGlobals) = preProject
+		global_1json__JSONSchema = http://json.schemastore.org/global
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Newtonsoft.Temp", "..\Newtonsoft.Temp\Newtonsoft.Temp\Newtonsoft.Temp.kproj", "{4C0FAAB8-135D-493A-A127-8A1036CF7E16}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Blacklite.Json.Schema", "src\Blacklite.Json.Schema\Blacklite.Json.Schema.kproj", "{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Blacklite.Json.Schema.TagHelpers", "src\Blacklite.Json.Schema.TagHelpers\Blacklite.Json.Schema.TagHelpers.kproj", "{82C0A8FB-34B1-4A12-9231-D794A288E1CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4EFD6197-763C-49E7-990E-55E9C818B2B7} = {0D5B341E-5275-4CBA-BA46-501F886423E9}
+		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B} = {0D5B341E-5275-4CBA-BA46-501F886423E9}
+		{82C0A8FB-34B1-4A12-9231-D794A288E1CE} = {0D5B341E-5275-4CBA-BA46-501F886423E9}
+	EndGlobalSection
+EndGlobal

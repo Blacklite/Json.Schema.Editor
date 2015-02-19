@@ -1,0 +1,12 @@
+﻿{
+    "webroot": "wwwroot",
+    "version": "1.0.0-*",
+    "dependencies": {
+        "Microsoft.Framework.DependencyInjection": "1.0.0-beta3-*",
+        "Microsoft.AspNet.Mvc.Core": "6.0.0-beta3-*",
+        "Newtonsoft.Temp": ""
+    },
+    "frameworks": {
+        "aspnet50": { }
+    }
+}
