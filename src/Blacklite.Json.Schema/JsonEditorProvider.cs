@@ -12,6 +12,7 @@ namespace Blacklite.Json.Schema
     public interface IJsonEditorProvider
     {
         JsonEditor GetJsonEditor(JSchema schema, string key, string prefix = "");
+        JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "");
     }
 
     public class JsonEditorOptions
@@ -50,9 +51,14 @@ namespace Blacklite.Json.Schema
             }
         }
 
+        public JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "")
+        {
+            return new JsonEditorResolutionContext(schema, _serializer, _decorator, key, prefix);
+        }
+
         public JsonEditor GetJsonEditor(JSchema schema, string key, string prefix = "")
         {
-            var context = new JsonEditorResolutionContext(schema, _serializer, _decorator, key, prefix);
+            var context = GetResolutionContext(schema, key, prefix);
             var resolver = _resolvers.Select(x => x.GetEditor(context)).First(x => x != null);
             return resolver;
         }
