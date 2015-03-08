@@ -1,25 +1,40 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22512.0
+VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0D5B341E-5275-4CBA-BA46-501F886423E9}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "JsonSchema", "src\JsonSchema\JsonSchema.kproj", "{4EFD6197-763C-49E7-990E-55E9C818B2B7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{906AEEDF-9D9A-4AF4-855E-7F3473332C91}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-	ProjectSection(FolderGlobals) = preProject
-		global_1json__JSONSchema = http://json.schemastore.org/global
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Newtonsoft.Temp", "..\Newtonsoft.Temp\Newtonsoft.Temp\Newtonsoft.Temp.kproj", "{4C0FAAB8-135D-493A-A127-8A1036CF7E16}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Newtonsoft.Temp", "..\Newtonsoft.Temp\Newtonsoft.Temp\Newtonsoft.Temp.kproj", "{BDC0AA8F-3C0E-4925-9D33-5470E673B791}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Blacklite.Json.Schema", "src\Blacklite.Json.Schema\Blacklite.Json.Schema.kproj", "{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Blacklite.Json.Schema.TagHelpers", "src\Blacklite.Json.Schema.TagHelpers\Blacklite.Json.Schema.TagHelpers.kproj", "{82C0A8FB-34B1-4A12-9231-D794A288E1CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{5DD13EEA-CD95-46AF-89D3-1669C529A28A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{760C194B-A50E-4A92-9A20-8E4C64DAB126}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		global.json = global.json
+		NuGet.config = NuGet.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{01B786FC-4EEA-4381-AEE4-EEA4E5E40368}"
+	ProjectSection(SolutionItems) = preProject
+		build.cmd = build.cmd
+		build.sh = build.sh
+		makefile.shade = makefile.shade
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{733E9DC1-8551-45B2-9131-D91B8DC9FEDE}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Schema.Tests", "test\Schema.Tests\Schema.Tests.kproj", "{86701DDC-BDE7-43DF-BA6D-10BEAA287D7E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Schema.TagHelpers.Tests", "test\Schema.TagHelpers.Tests\Schema.TagHelpers.Tests.kproj", "{CF112563-421A-4B63-98D8-398779ABA1C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +42,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EFD6197-763C-49E7-990E-55E9C818B2B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C0FAAB8-135D-493A-A127-8A1036CF7E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC0AA8F-3C0E-4925-9D33-5470E673B791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC0AA8F-3C0E-4925-9D33-5470E673B791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC0AA8F-3C0E-4925-9D33-5470E673B791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC0AA8F-3C0E-4925-9D33-5470E673B791}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,13 +54,23 @@ Global
 		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82C0A8FB-34B1-4A12-9231-D794A288E1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86701DDC-BDE7-43DF-BA6D-10BEAA287D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86701DDC-BDE7-43DF-BA6D-10BEAA287D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86701DDC-BDE7-43DF-BA6D-10BEAA287D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86701DDC-BDE7-43DF-BA6D-10BEAA287D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF112563-421A-4B63-98D8-398779ABA1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF112563-421A-4B63-98D8-398779ABA1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF112563-421A-4B63-98D8-398779ABA1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF112563-421A-4B63-98D8-398779ABA1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4EFD6197-763C-49E7-990E-55E9C818B2B7} = {0D5B341E-5275-4CBA-BA46-501F886423E9}
+		{BDC0AA8F-3C0E-4925-9D33-5470E673B791} = {5DD13EEA-CD95-46AF-89D3-1669C529A28A}
 		{7BF32597-7D8D-4BAF-ACB0-00D875FFF68B} = {0D5B341E-5275-4CBA-BA46-501F886423E9}
 		{82C0A8FB-34B1-4A12-9231-D794A288E1CE} = {0D5B341E-5275-4CBA-BA46-501F886423E9}
+		{86701DDC-BDE7-43DF-BA6D-10BEAA287D7E} = {733E9DC1-8551-45B2-9131-D91B8DC9FEDE}
+		{CF112563-421A-4B63-98D8-398779ABA1C8} = {733E9DC1-8551-45B2-9131-D91B8DC9FEDE}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,19 @@
+﻿{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "Blacklite.Json.Schema.TagHelpers": "",
+        "Moq": "4.2",
+        "xunit.runner.kre": "1.0.0-beta3-*"
+    },
+
+    "commands": {
+        "test": "xunit.runner.kre"
+    },
+
+    "frameworks": {
+        "aspnet50": {
+            "dependencies": {
+            }
+        }
+    }
+}

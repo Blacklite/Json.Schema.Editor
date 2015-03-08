@@ -2,7 +2,7 @@
     "webroot": "wwwroot",
     "version": "1.0.0-*",
     "dependencies": {
-        "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta3-*",
+        "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta3",
         "Blacklite.Json.Schema": "",
         "Newtonsoft.Temp": ""
     },
