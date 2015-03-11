@@ -34,7 +34,7 @@
         "**.vspscc"
     ],
     "scripts": {
-        "postrestore": [ "npm install" ],
-        "prepare": [ "grunt bower:install" ]
+        /*"postrestore": [ "npm install" ],
+        "prepare": [ "grunt bower:install" ]*/
     }
 }
