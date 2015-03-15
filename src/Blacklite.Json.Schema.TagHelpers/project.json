@@ -3,7 +3,8 @@
     "dependencies": {
         "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta3",
         "Blacklite.Json.Schema": "",
-        "Newtonsoft.Temp": ""
+        "Temp.Newtonsoft.Json": "",
+        "Temp.Newtonsoft.Json.Schema": ""
     },
 
     "devDependencies": {

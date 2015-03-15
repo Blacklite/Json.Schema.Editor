@@ -3,7 +3,8 @@
     "dependencies": {
         "Microsoft.Framework.DependencyInjection": "1.0.0-beta3",
         "Microsoft.AspNet.Mvc.Core": "6.0.0-beta3",
-        "Newtonsoft.Temp": ""
+        "Temp.Newtonsoft.Json": "",
+        "Temp.Newtonsoft.Json.Schema": ""
     },
 
    "devDependencies": {
