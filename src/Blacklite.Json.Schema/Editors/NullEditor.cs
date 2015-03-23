@@ -15,7 +15,7 @@ namespace Blacklite.Json.Schema.Editors
 
         public override JsonEditorRenderer Build()
         {
-            return new JsonEditorRenderer(Context.Serializer, x => "");
+            return new JsonEditorRenderer(Context.Serializer, x => "", x => "");
         }
     }
 }

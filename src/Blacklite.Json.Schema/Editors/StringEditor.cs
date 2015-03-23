@@ -56,10 +56,12 @@ namespace Blacklite.Json.Schema.Editors
 
             input.Attributes.Add("type", _inputType);
 
+            input.Attributes.Add("id", TagBuilder.CreateSanitizedId(Context.Path, "_"));
             input.Attributes.Add("name", Context.Path);
 
             var label = new TagBuilder("label");
             label.InnerHtml = GetTitle();
+            label.Attributes.Add("for", TagBuilder.CreateSanitizedId(Context.Path, "_"));
 
 
             var description = new TagBuilder("div");
@@ -70,11 +72,9 @@ namespace Blacklite.Json.Schema.Editors
 
             return new JsonEditorRenderer(Context.Serializer, value =>
             {
-                var id = Guid.NewGuid();
                 var newInput = new TagBuilder(input.TagName);
                 newInput.MergeAttributes(input.Attributes);
-                newInput.Attributes.Add("id", id.ToString());
-                
+
                 if (_inputType == "checkbox")
                 {
                     newInput.Attributes.Add("value", "true");
@@ -90,10 +90,8 @@ namespace Blacklite.Json.Schema.Editors
                     newInput.Attributes.Add("value", value?.ToString());
                 }
 
-
                 var newLabel = new TagBuilder(label.TagName);
                 newLabel.MergeAttributes(label.Attributes);
-                newLabel.Attributes.Add("for", id.ToString());
                 newLabel.InnerHtml = label.InnerHtml;
 
                 var control = new TagBuilder("div");
@@ -102,7 +100,7 @@ namespace Blacklite.Json.Schema.Editors
                 newLabel = Context.Decorator.DecorateLabel(Context, newLabel);
                 control = Context.Decorator.DecorateContainer(Context, control, newLabel, newInput, description);
                 return control.ToString();
-            });
+            }, x => "");
         }
     }
 }

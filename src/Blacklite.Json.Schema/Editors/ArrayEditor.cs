@@ -47,7 +47,7 @@ namespace Blacklite.Json.Schema.Editors
                     result.InnerHtml = string.Join("", renderers.Select((x, index) => x.Render(arrValue[index])));
 
                     return result.ToString();
-                });
+                }, value => string.Join("", renderers.Select((x, index) => x.JavaScript(value[index]))));
             }
             else
             {
@@ -75,6 +75,21 @@ namespace Blacklite.Json.Schema.Editors
                     .Select((x, index) => x.Render(arrValue[index])));
 
                     return result.ToString();
+                }, value =>
+                {
+                    var arrValue = value as JArray;
+                    var renderers = arrValue.Select((x, index) =>
+                    {
+                        JsonEditorRenderer renderer;
+                        if (!rendererCache.TryGetValue(index, out renderer))
+                        {
+                            renderer = GetItemRenderer($"[{index}]", itemSchema);
+                            rendererCache.Add(index, renderer);
+                        }
+                        return renderer;
+                    });
+
+                    return string.Join("", renderers.Select((x, index) => x.JavaScript(value[index])));
                 });
             }
         }

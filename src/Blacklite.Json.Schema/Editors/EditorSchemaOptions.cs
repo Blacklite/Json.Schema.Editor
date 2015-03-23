@@ -32,6 +32,7 @@ namespace Blacklite.Json.Schema.Editors
         }
 
         public bool Hidden { get; set; } = false;
+        public string Key { get; set; }
         public bool ReadOnly { get; set; } = false;
         public bool ShowHeader { get; set; } = true;
         public string[] ValueDisplay { get; set; }

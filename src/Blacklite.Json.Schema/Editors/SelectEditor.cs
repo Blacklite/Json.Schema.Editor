@@ -30,6 +30,7 @@ namespace Blacklite.Json.Schema.Editors
             if (!string.IsNullOrEmpty(Format))
                 input.Attributes.Add("data-editor-format", Format);
 
+            input.Attributes.Add("id", TagBuilder.CreateSanitizedId(Context.Path, "_"));
             input.Attributes.Add("name", Context.Path);
 
             DecorateTagBuilder(input);
@@ -53,12 +54,12 @@ namespace Blacklite.Json.Schema.Editors
                         option.InnerHtml = Context.Schema.Enum[index].ToString();
 
                     return option.ToString();
-                });
+                }, z => "");
             });
 
             var label = new TagBuilder("label");
             label.InnerHtml = GetTitle();
-
+            label.Attributes.Add("for", TagBuilder.CreateSanitizedId(Context.Path, "_"));
 
             var description = new TagBuilder("div");
             description.InnerHtml = Context.Schema.Description;
@@ -68,15 +69,12 @@ namespace Blacklite.Json.Schema.Editors
 
             return new JsonEditorRenderer(Context.Serializer, value =>
             {
-                var id = Guid.NewGuid();
                 var newInput = new TagBuilder(input.TagName);
                 newInput.MergeAttributes(input.Attributes);
-                newInput.Attributes.Add("id", id.ToString());
                 newInput.InnerHtml = string.Join("", options.Select(x => x.Render(value)));
 
                 var newLabel = new TagBuilder(label.TagName);
                 newLabel.MergeAttributes(label.Attributes);
-                newLabel.Attributes.Add("for", id.ToString());
                 newLabel.InnerHtml = label.InnerHtml;
 
                 var control = new TagBuilder("div");
@@ -86,7 +84,7 @@ namespace Blacklite.Json.Schema.Editors
 
                 control = Context.Decorator.DecorateContainer(Context, control, newLabel, newInput, description);
                 return control.ToString();
-            });
+            }, x => "");
         }
 
         protected virtual void DecorateTagBuilder(TagBuilder builder) { }

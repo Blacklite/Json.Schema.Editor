@@ -46,7 +46,7 @@ namespace Blacklite.Json.Schema.Editors
                     result.InnerHtml += property.Value.Render(value?[property.Key]);
 
                 return result.ToString();
-            });
+            }, value => string.Join("", propertyTagRenderes.Select(property => property.Value.JavaScript(value?[property.Key]))));
         }
 
         private JsonEditorRenderer GetPropertyTagBuilder(string key, JSchema schema)

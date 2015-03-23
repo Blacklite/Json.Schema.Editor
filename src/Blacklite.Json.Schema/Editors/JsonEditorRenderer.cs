@@ -13,10 +13,13 @@ namespace Blacklite.Json.Schema.Editors
     {
         private readonly JsonSerializer _serializer;
         private readonly Func<JToken, string> _renderer;
-        public JsonEditorRenderer(JsonSerializer serializer, Func<JToken, string> renderer)
+        private readonly Func<JToken, string> _javaScript;
+
+        public JsonEditorRenderer(JsonSerializer serializer, Func<JToken, string> renderer, Func<JToken, string> javaScript)
         {
             _serializer = serializer;
             _renderer = renderer;
+            _javaScript = javaScript;
         }
 
         public string Render(JToken value)
@@ -25,6 +28,16 @@ namespace Blacklite.Json.Schema.Editors
         }
 
         public string Render(object value)
+        {
+            return Render(JObject.FromObject(value, _serializer));
+        }
+
+        public string JavaScript(JToken value)
+        {
+            return _javaScript(value);
+        }
+
+        public string JavaScript(object value)
         {
             return Render(JObject.FromObject(value, _serializer));
         }
