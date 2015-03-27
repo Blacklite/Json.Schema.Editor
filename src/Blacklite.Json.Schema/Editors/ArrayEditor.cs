@@ -96,7 +96,7 @@ namespace Blacklite.Json.Schema.Editors
 
         private JsonEditorRenderer GetItemRenderer(string index, JSchema schema)
         {
-            var editor = _editorProvider.GetJsonEditor(schema, index, Context.Path);
+            var editor = _editorProvider.GetJsonEditor(schema, index, Context.Path, Context);
 
             if (editor.Context.Options.Hidden)
                 return null;

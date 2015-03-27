@@ -20,11 +20,12 @@ namespace Blacklite.Json.Schema
         IJsonEditorDecorator Decorator { get; }
         EditorSchemaOptions Options { get; }
         IDictionary<string, object> Data { get; }
+        IEnumerable<IJsonEditorResolver> Resolvers { get; }
     }
 
     public class JsonEditorResolutionContext : IJsonEditorResolutionContext
     {
-        public JsonEditorResolutionContext(JSchema schema, JsonSerializer serializer, IJsonEditorDecorator decorator, string key, string prefix = "")
+        public JsonEditorResolutionContext(JSchema schema, JsonSerializer serializer, IJsonEditorDecorator decorator, string key, string prefix, IEnumerable<IJsonEditorResolver> resolvers)
         {
             Schema = schema;
             Serializer = serializer;
@@ -33,6 +34,7 @@ namespace Blacklite.Json.Schema
             Decorator = decorator;
             Options = new EditorSchemaOptions(schema, serializer);
             Data = new Dictionary<string, object>();
+            Resolvers = resolvers;
 
             if (schema.Type.HasValue)
             {
@@ -72,5 +74,6 @@ namespace Blacklite.Json.Schema
         public EditorSchemaOptions Options { get; }
 
         public IDictionary<string, object> Data { get; }
+        public IEnumerable<IJsonEditorResolver> Resolvers { get; }
     }
 }

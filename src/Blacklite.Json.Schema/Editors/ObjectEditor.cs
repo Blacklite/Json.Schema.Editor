@@ -51,7 +51,7 @@ namespace Blacklite.Json.Schema.Editors
 
         private JsonEditorRenderer GetPropertyTagBuilder(string key, JSchema schema)
         {
-            var editor = _editorProvider.GetJsonEditor(schema, key, Context.Path);
+            var editor = _editorProvider.GetJsonEditor(schema, key, Context.Path, Context);
 
             if (editor.Context.Options.Hidden)
                 return null;

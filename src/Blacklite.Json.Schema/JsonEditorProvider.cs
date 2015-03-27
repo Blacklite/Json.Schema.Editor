@@ -11,8 +11,11 @@ namespace Blacklite.Json.Schema
 {
     public interface IJsonEditorProvider
     {
-        JsonEditor GetJsonEditor(JSchema schema, string key, string prefix = "");
-        JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "");
+        JsonEditor GetJsonEditor(JSchema schema, string key, params IJsonEditorResolver[] resolvers);
+        JsonEditor GetJsonEditor(JSchema schema, string key, IJsonEditorResolutionContext parentContext = null);
+        JsonEditor GetJsonEditor(JSchema schema, string key, string prefix, IJsonEditorResolutionContext parentContext);
+        JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "", IJsonEditorResolutionContext parentContext = null);
+        JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, IEnumerable<IJsonEditorResolver> resolvers);
     }
 
     public class JsonEditorOptions
@@ -26,10 +29,12 @@ namespace Blacklite.Json.Schema
         private readonly IEnumerable<IJsonEditorResolver> _resolvers;
         private readonly JsonSerializer _serializer;
         private readonly IJsonEditorDecorator _decorator;
+        private readonly DefaultJsonEditorResolver _defaultResolver;
 
         public JsonEditorProvider(IEnumerable<IJsonEditorResolver> resolvers, IOptions<JsonEditorOptions> configuredOptions)
         {
-            _resolvers = resolvers.OrderByDescending(x => x.Priority).Union(new[] { new DefaultJsonEditorResolver(this) });
+            _defaultResolver = new DefaultJsonEditorResolver(this);
+            _resolvers = resolvers.OrderByDescending(x => x.Priority).Union(new[] { _defaultResolver }).ToArray();
 
             if (configuredOptions.Options.Serializer == null)
             {
@@ -51,15 +56,36 @@ namespace Blacklite.Json.Schema
             }
         }
 
-        public JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "")
+        public JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "", IJsonEditorResolutionContext parentContext = null)
         {
-            return new JsonEditorResolutionContext(schema, _serializer, _decorator, key, prefix);
+            return new JsonEditorResolutionContext(schema, _serializer, _decorator, key, prefix, parentContext?.Resolvers ?? _resolvers);
         }
 
-        public JsonEditor GetJsonEditor(JSchema schema, string key, string prefix = "")
+        public JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, IEnumerable<IJsonEditorResolver> resolvers)
         {
-            var context = GetResolutionContext(schema, key, prefix);
-            var resolver = _resolvers.Select(x => x.GetEditor(context)).First(x => x != null);
+            return new JsonEditorResolutionContext(schema, _serializer, _decorator, key, string.Empty,
+                resolvers?.Concat(_resolvers.Except(new[] { _defaultResolver }))
+                          .OrderByDescending(z => z.Priority)
+                          .Union(new[] { _defaultResolver })
+                          .ToArray() ?? _resolvers);
+        }
+
+        public JsonEditor GetJsonEditor(JSchema schema, string key, string prefix, IJsonEditorResolutionContext parentContext)
+        {
+            var context = GetResolutionContext(schema, key, prefix, parentContext);
+            var resolver = context.Resolvers.Select(x => x.GetEditor(context)).First(x => x != null);
+            return resolver;
+        }
+
+        public JsonEditor GetJsonEditor(JSchema schema, string key, IJsonEditorResolutionContext parentContext = null)
+        {
+            return GetJsonEditor(schema, key, string.Empty, parentContext);
+        }
+
+        public JsonEditor GetJsonEditor(JSchema schema, string key, params IJsonEditorResolver[] resolvers)
+        {
+            var context = GetResolutionContext(schema, key, resolvers);
+            var resolver = context.Resolvers.Select(x => x.GetEditor(context)).First(x => x != null);
             return resolver;
         }
     }
