@@ -16,6 +16,7 @@ namespace Blacklite.Json.Schema
         JsonEditor GetJsonEditor(JSchema schema, string key, string prefix, IJsonEditorResolutionContext parentContext);
         JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "", IJsonEditorResolutionContext parentContext = null);
         JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, IEnumerable<IJsonEditorResolver> resolvers);
+        JsonEditorOptions Options { get; }
     }
 
     public class JsonEditorOptions
@@ -27,43 +28,42 @@ namespace Blacklite.Json.Schema
     public class JsonEditorProvider : IJsonEditorProvider
     {
         private readonly IEnumerable<IJsonEditorResolver> _resolvers;
-        private readonly JsonSerializer _serializer;
-        private readonly IJsonEditorDecorator _decorator;
         private readonly DefaultJsonEditorResolver _defaultResolver;
+
+        public JsonEditorOptions Options { get; }
 
         public JsonEditorProvider(IEnumerable<IJsonEditorResolver> resolvers, IOptions<JsonEditorOptions> configuredOptions)
         {
             _defaultResolver = new DefaultJsonEditorResolver(this);
             _resolvers = resolvers.OrderByDescending(x => x.Priority).Union(new[] { _defaultResolver }).ToArray();
 
-            if (configuredOptions.Options.Serializer == null)
+            var options = Options = new JsonEditorOptions()
             {
-                _serializer = new JsonSerializer();
-                _serializer.Converters.Add(new Temp.Newtonsoft.Json.Converters.StringEnumConverter());
-                _serializer.ContractResolver = new Temp.Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
-            }
-            else
+                Decorator = configuredOptions.Options.Decorator,
+                Serializer = configuredOptions.Options.Serializer,
+            };
+
+            if (options.Serializer == null)
             {
-                _serializer = configuredOptions.Options.Serializer;
+                options.Serializer = new JsonSerializer();
+                options.Serializer.Converters.Add(new Temp.Newtonsoft.Json.Converters.StringEnumConverter());
+                options.Serializer.ContractResolver = new Temp.Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
             }
+
             if (configuredOptions.Options.Decorator == null)
             {
-                _decorator = new JsonEditorDecorator();
-            }
-            else
-            {
-                _decorator = configuredOptions.Options.Decorator;
+                options.Decorator = new JsonEditorDecorator();
             }
         }
 
         public JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, string prefix = "", IJsonEditorResolutionContext parentContext = null)
         {
-            return new JsonEditorResolutionContext(schema, _serializer, _decorator, key, prefix, parentContext?.Resolvers ?? _resolvers);
+            return new JsonEditorResolutionContext(schema, Options.Serializer, Options.Decorator, key, prefix, parentContext?.Resolvers ?? _resolvers);
         }
 
         public JsonEditorResolutionContext GetResolutionContext(JSchema schema, string key, IEnumerable<IJsonEditorResolver> resolvers)
         {
-            return new JsonEditorResolutionContext(schema, _serializer, _decorator, key, string.Empty,
+            return new JsonEditorResolutionContext(schema, Options.Serializer, Options.Decorator, key, string.Empty,
                 resolvers?.Concat(_resolvers.Except(new[] { _defaultResolver }))
                           .OrderByDescending(z => z.Priority)
                           .Union(new[] { _defaultResolver })
