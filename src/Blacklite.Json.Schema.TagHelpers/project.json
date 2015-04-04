@@ -2,9 +2,7 @@
     "version": "1.0.0-*",
     "dependencies": {
         "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta3",
-        "Blacklite.Json.Schema": "",
-        "Temp.Newtonsoft.Json": "",
-        "Temp.Newtonsoft.Json.Schema": ""
+        "Blacklite.Json.Schema": "1.0.0-*"
     },
 
     "devDependencies": {
@@ -16,6 +14,16 @@
     },
 
     "frameworks": {
-        "aspnet50": { }
+        "aspnet50": {
+            "frameworkAssemblies": {
+                "System.Runtime": "",
+                "System.Runtime.Serialization": "",
+                "System.Collections": "",
+                "System.Xml": "",
+                "System.Xml.Linq": "",
+                "System.Data": "",
+                "System.Numerics": ""
+            }
+        }
     }
 }
