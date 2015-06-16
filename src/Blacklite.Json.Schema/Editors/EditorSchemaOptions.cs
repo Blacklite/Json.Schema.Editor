@@ -1,10 +1,10 @@
-﻿using Temp.Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Threading.Tasks;
-using Temp.Newtonsoft.Json.Schema;
-using Temp.Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Linq;
 
 namespace Blacklite.Json.Schema.Editors
 {

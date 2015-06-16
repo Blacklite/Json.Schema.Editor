@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Temp.Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Schema;
 
 namespace Blacklite.Json.Schema.Editors
 {

@@ -4,8 +4,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Temp.Newtonsoft.Json;
-using Temp.Newtonsoft.Json.Schema;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 
 namespace Blacklite.Json.Schema
 {
@@ -39,7 +39,7 @@ namespace Blacklite.Json.Schema
             if (schema.Type.HasValue)
             {
                 var value = schema.Type.Value;
-                if (value.HasFlag(JSchemaType.Float))
+                if (value.HasFlag(JSchemaType.Number))
                     ValueType = typeof(float);
                 if (value.HasFlag(JSchemaType.Integer))
                     ValueType = typeof(int);

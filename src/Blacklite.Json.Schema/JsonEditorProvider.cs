@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Temp.Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Schema;
 using Blacklite.Json.Schema.Editors;
-using Temp.Newtonsoft.Json;
+using Newtonsoft.Json;
 using Microsoft.Framework.OptionsModel;
 
 namespace Blacklite.Json.Schema
@@ -46,8 +46,8 @@ namespace Blacklite.Json.Schema
             if (options.Serializer == null)
             {
                 options.Serializer = new JsonSerializer();
-                options.Serializer.Converters.Add(new Temp.Newtonsoft.Json.Converters.StringEnumConverter());
-                options.Serializer.ContractResolver = new Temp.Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+                options.Serializer.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                options.Serializer.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
             }
 
             if (configuredOptions.Options.Decorator == null)

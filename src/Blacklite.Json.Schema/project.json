@@ -1,36 +1,31 @@
 ﻿{
     "version": "1.0.0-*",
     "dependencies": {
-        "Microsoft.Framework.DependencyInjection": "1.0.0-beta3",
-        "Microsoft.AspNet.Mvc.Core": "6.0.0-beta3",
-        "Microsoft.Framework.Runtime.Common": { "version": "1.0.0-*", "type": "build" },
-        "Microsoft.Framework.Runtime.Interfaces": { "version": "1.0.0-*", "type": "build" },
-        "Microsoft.Framework.Runtime.Roslyn.Common": { "version": "1.0.0-*", "type": "build" }
+        "Microsoft.Framework.DependencyInjection": "1.0.0-beta5-*",
+        "Microsoft.AspNet.Mvc.Core": "6.0.0-beta5-*",
+        "Newtonsoft.Json": "6.0.8",
+        "Newtonsoft.Json.Schema": "1.0.8",
+        "Microsoft.Framework.Runtime.Abstractions": { "version": "1.0.0-beta5-*", "type": "build" },
+        "Microsoft.Framework.Runtime.Roslyn.Abstractions": { "version": "1.0.0-beta5-*", "type": "build" }
     },
-
-    "code": [
-        "../../Newtonsoft/**/*.cs",
-        "**/*.cs"
-    ],
 
     "devDependencies": {
         "NR6Pack": "0.5.0.0"
     },
 
     "compilationOptions": {
-        //"warningsAsErrors": true
+        "warningsAsErrors": true
     },
 
     "frameworks": {
-        "aspnet50": {
+        "dnx451": {
             "frameworkAssemblies": {
-                "System.Runtime": "",
-                "System.Runtime.Serialization": "",
-                "System.Collections": "",
-                "System.Xml": "",
-                "System.Xml.Linq": "",
-                "System.Data": "",
-                "System.Numerics": ""
+                "System.Runtime": "4.0.10.0"
+            }
+        },
+        "dnxcore50": {
+            "dependencies": {
+                "System.Runtime": "4.0.20-beta-*"
             }
         }
     }

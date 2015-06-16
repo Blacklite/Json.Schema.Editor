@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Temp.Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Schema;
 
 namespace Blacklite.Json.Schema
 {
@@ -29,7 +29,7 @@ namespace Blacklite.Json.Schema
 
             if (schema.Type == JSchemaType.Array && schema.Items.Count == 1 && schema.UniqueItems &&
                 schema.Items[0].Enum.Any() && schema.Items[0].Type.HasValue &&
-                (schema.Items[0].Type.Value.HasFlag(JSchemaType.String) || schema.Items[0].Type.Value.HasFlag(JSchemaType.Float) || schema.Items[0].Type.Value.HasFlag(JSchemaType.Integer)))
+                (schema.Items[0].Type.Value.HasFlag(JSchemaType.String) || schema.Items[0].Type.Value.HasFlag(JSchemaType.Number) || schema.Items[0].Type.Value.HasFlag(JSchemaType.Integer)))
                 return new MultiselectJsonEditor(context);
 
             if (schema.Enum.Any())
@@ -41,7 +41,7 @@ namespace Blacklite.Json.Schema
                 //    return new EnumJsonEditor(context);
                 //}
                 //else
-                if (schema.Type == JSchemaType.Float || schema.Type == JSchemaType.Integer || schema.Type == JSchemaType.String)
+                if (schema.Type == JSchemaType.Number || schema.Type == JSchemaType.Integer || schema.Type == JSchemaType.String)
                 {
                     return new SelectJsonEditor(context);
                 }
@@ -50,7 +50,7 @@ namespace Blacklite.Json.Schema
             if (schema.Type == JSchemaType.String)
                 return new StringJsonEditor(context);
 
-            if (schema.Type == JSchemaType.Float)
+            if (schema.Type == JSchemaType.Number)
                 return new FloatJsonEditor(context);
 
             if (schema.Type == JSchemaType.Integer)
