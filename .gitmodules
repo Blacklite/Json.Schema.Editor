@@ -1,4 +1,0 @@
-[submodule "Newtonsoft"]
-	path = Newtonsoft
-	url = git@github.com:Blacklite/Newtonsoft.Temp.git
-	branch = master

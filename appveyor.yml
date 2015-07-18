@@ -3,8 +3,7 @@ os: Visual Studio 2015 Preview
 nuget:
   account_feed: false
   project_feed: false
-  disable_publish_on_pr: true
-
+  disable_publish_on_pr: true
 # Fix line endings in Windows. (runs before repo cloning)
 init:
   - git config --global core.autocrlf input
@@ -12,25 +11,11 @@ init:
 # this turns of AppVeyor automatic searching for test-assemblies, not the actual testing
 test: off
 
-environment:
-  private_key:
-    secure: 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
-
-install:
-  - ps: $fileContent = "-----BEGIN RSA PRIVATE KEY-----`n"
-  - ps: $fileContent += $env:private_key.Replace(' ', "`n")
-  - ps: $fileContent += "`n-----END RSA PRIVATE KEY-----`n"
-  - ps: Set-Content c:\users\appveyor\.ssh\id_rsa $fileContent
-  - git submodule update --init --recursive
-  
 build_script:
-  - set K_BUILD_VERSION=%APPVEYOR_BUILD_NUMBER% #temp
-  - set K_BUILD_VERSION=%K_BUILD_VERSION:~-4%
-  - echo %APPVEYOR%
-  - echo %APPVEYOR_REPO_TAG%
-  - echo %APPVEYOR_REPO_BRANCH%
-  - echo %K_BUILD_VERSION%
-  - build.cmd
+  - "echo APPVEYOR: %APPVEYOR%"
+  - "echo APPVEYOR_REPO_TAG: %APPVEYOR_REPO_TAG%"
+  - "echo APPVEYOR_REPO_BRANCH: %APPVEYOR_REPO_BRANCH%"
+  - ps: .\build.ps1
 
 artifacts:
   - path: artifacts\build\*.nupkg
