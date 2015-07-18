@@ -1,12 +1,11 @@
 ﻿{
     "version": "1.0.0-*",
     "dependencies": {
-        "Microsoft.Framework.DependencyInjection": "1.0.0-beta5-*",
-        "Microsoft.AspNet.Mvc.Core": "6.0.0-beta5-*",
-        "Newtonsoft.Json": "6.0.8",
-        "Newtonsoft.Json.Schema": "1.0.8",
-        "Microsoft.Framework.Runtime.Abstractions": { "version": "1.0.0-beta5-*", "type": "build" },
-        "Microsoft.Framework.Runtime.Roslyn.Abstractions": { "version": "1.0.0-beta5-*", "type": "build" }
+        "Microsoft.Framework.DependencyInjection": "1.0.0-beta5",
+        "Newtonsoft.Json": "7.0.1",
+        "Newtonsoft.Json.Schema": "1.0.9",
+        "Microsoft.Framework.OptionsModel": "1.0.0-beta5",
+        "Microsoft.AspNet.Mvc.Core": "6.0.0-beta5"
     },
 
     "devDependencies": {
@@ -25,7 +24,8 @@
         },
         "dnxcore50": {
             "dependencies": {
-                "System.Runtime": "4.0.20-beta-*"
+                "System.Runtime": "4.0.20-*",
+                "System.Collections":  "4.0.10-*"
             }
         }
     }

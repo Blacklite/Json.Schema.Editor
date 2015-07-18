@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Mvc.Rendering;
 using System;
 using System.Collections;
 using System.Collections.Generic;

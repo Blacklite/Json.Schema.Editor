@@ -1,7 +1,7 @@
 ﻿{
     "version": "1.0.0-*",
     "dependencies": {
-        "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta5-*",
+        "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta5",
         "Blacklite.Json.Schema": "1.0.0-*"
     },
 

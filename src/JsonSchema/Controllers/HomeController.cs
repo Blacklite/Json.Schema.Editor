@@ -4,10 +4,10 @@ using System.Linq;
 using Microsoft.AspNet.Mvc;
 using JsonSchema.Renderer;
 using Microsoft.AspNet.Hosting;
-using Temp.Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Schema;
 using System.IO;
-using Temp.Newtonsoft.Json;
-using Temp.Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Blacklite.Json.Schema;
 
 namespace JsonSchema.Controllers
@@ -52,8 +52,8 @@ namespace JsonSchema.Controllers
         {
             // TODO: Make options so that the serializer can be changed.
             var _serializer = new JsonSerializer();
-            _serializer.Converters.Add(new Temp.Newtonsoft.Json.Converters.StringEnumConverter());
-            _serializer.ContractResolver = new Temp.Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            _serializer.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+            _serializer.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
             return View(null,
                 _editorProvider.GetJsonEditor(_schema, "Features").Build().Render(JObject.Parse(__json))
             );

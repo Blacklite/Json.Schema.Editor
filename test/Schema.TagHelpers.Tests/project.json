@@ -1,7 +1,7 @@
 ﻿{
     "version": "1.0.0-*",
     "dependencies": {
-        "Blacklite.Json.Schema": "",
+        "Blacklite.Json.Schema": "1.0.0-*",
         "Moq": "4.2",
         "xunit": "2.1.0-*",
         "xunit.runner.dnx": "2.1.0-*"
